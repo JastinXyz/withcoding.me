@@ -4,15 +4,17 @@ var bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const {verify} = require('hcaptcha');
 const rateLimit = require('express-rate-limit');
+const ejs = require('ejs');
 const app = express();
 
 require('dotenv').config();
-const { PORT, CF_GLOBAL_APIKEY, CF_ZONE_ID, CF_EMAIL, HCAPTCHA_SECRET } = process.env;
+const { PORT, CF_GLOBAL_APIKEY, CF_ZONE_ID, CF_EMAIL, HCAPTCHA_SECRET, HCAPTCHA_SITEKEY } = process.env;
 const baseUrl = 'https://api.cloudflare.com/client/v4/zones/' + CF_ZONE_ID;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }))
-
+app.set('view engine', 'html');
+app.engine('html', ejs.renderFile);
 
 const addLimit = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -37,7 +39,7 @@ const addLimit = rateLimit({
 
 
 app.get('/', async(req, res) => {
-  res.sendFile(__dirname + '/views/index.html')
+  res.render('index.html', { hcaptcha_sitekey: HCAPTCHA_SITEKEY })
 })
 
 app.get('/success', async(req, res) => {
