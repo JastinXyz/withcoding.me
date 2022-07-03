@@ -23,3 +23,4 @@ I don't know if this will be done in the near future or in the future. Feel free
 - Another records type.
 - Edit system.
 - Delete system.
+- Proxy options.
