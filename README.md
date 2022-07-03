@@ -9,6 +9,8 @@ Have a question or have a problem? Just open the [issue](https://github.com/Jast
 # Add your free subdomain.
 https://withcoding.me
 
+![preveiew](./ss/gambar.png)
+
 # Self Hosting
 - Fill all the information details in `.env`
 - `npm i`
