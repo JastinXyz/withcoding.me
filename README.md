@@ -13,6 +13,7 @@ https://withcoding.me
 
 # Self Hosting
 - Fill all the information details in `.env`
+- Replace all ".withcoding.me" or "withcoding.me" in `views/index.html` and `views/success.html` to your domain (`<script>` section). 
 - `npm i`
 - `node .`
 - enjoy.
